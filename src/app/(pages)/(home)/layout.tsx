@@ -126,14 +126,14 @@ export default async function ChatLayout({
                 </div>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <Button asChild className="w-full p-0" variant="t3">
-                  <Link
-                    href="/"
-                    className="w-full h-full grid place-items-center"
-                  >
+                <Link
+                  href="/"
+                  className="w-full h-full grid place-items-center"
+                >
+                  <Button className="w-full p-0" variant="t3">
                     New Chat
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SearchThreads isSidebar />

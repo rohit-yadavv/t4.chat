@@ -232,27 +232,29 @@ export default function SearchModels() {
   if (isLoading && isModalOpen) {
     return (
       <DropdownMenu open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DropdownMenuTrigger asChild>
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            size="sm"
-            variant="ghost"
-            className="gap-2"
-          >
-            {isLoading ? (
-              <div className="text-center flex items-center gap-2">
-                Loading Models
-                <FiLoader size={16} className="animate-spin" />
-              </div>
-            ) : (
-              <>
-                <span className="max-w-[100px] truncate">
-                  {currentModel || "google/gemini-2.5-flash"}
-                </span>
-                <LuChevronDown />
-              </>
-            )}
-          </Button>
+        <DropdownMenuTrigger>
+          <div>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              size="sm"
+              variant="ghost"
+              className="gap-2"
+            >
+              {isLoading ? (
+                <div className="text-center flex items-center gap-2">
+                  Loading Models
+                  <FiLoader size={16} className="animate-spin" />
+                </div>
+              ) : (
+                <>
+                  <span className="max-w-[100px] truncate">
+                    {currentModel || "google/gemini-2.5-flash"}
+                  </span>
+                  <LuChevronDown />
+                </>
+              )}
+            </Button>
+          </div>
         </DropdownMenuTrigger>
       </DropdownMenu>
     );
@@ -261,20 +263,22 @@ export default function SearchModels() {
   if (error && isModalOpen) {
     return (
       <DropdownMenu open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DropdownMenuTrigger asChild>
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            size="sm"
-            variant="ghost"
-            className="gap-2"
-          >
-            <span className="max-w-[100px] truncate capitalize">
-              {currentModel && currentModel.includes("/")
-                ? currentModel.split("/")[1].trim().replace(/-/g, " ")
-                : "gemini-2.5-flash"}
-            </span>{" "}
-            <LuChevronDown />
-          </Button>
+        <DropdownMenuTrigger>
+          <div>
+            <Button
+              onClick={() => setIsModalOpen(true)}
+              size="sm"
+              variant="ghost"
+              className="gap-2"
+            >
+              <span className="max-w-[100px] truncate capitalize">
+                {currentModel && currentModel.includes("/")
+                  ? currentModel.split("/")[1].trim().replace(/-/g, " ")
+                  : "gemini-2.5-flash"}
+              </span>{" "}
+              <LuChevronDown />
+            </Button>
+          </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-[200px] p-4">
           <div className="text-center text-red-500">Error loading models</div>
@@ -285,22 +289,22 @@ export default function SearchModels() {
 
   return (
     <DropdownMenu open={isModalOpen} onOpenChange={setIsModalOpen}>
-      <DropdownMenuTrigger >
-       <DevTooltip tipData={`${currentService} : ${currentModel}`}>
-       <Button
-          onClick={() => setIsModalOpen(true)}
-          size="sm"
-          variant="ghost"
-          className="gap-2"
-        >
-          <span className="max-w-[100px] capitalize truncate">
-            {currentModel && currentModel.includes("/")
-              ? currentModel.split("/")[1].trim().replace(/-/g, " ")
-              : "gemini-2.5-flash"}
-          </span>{" "}
-          <LuChevronDown />
-        </Button>
-       </DevTooltip>
+      <DropdownMenuTrigger>
+        <DevTooltip tipData={`${currentService} : ${currentModel}`}>
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            size="sm"
+            variant="ghost"
+            className="gap-2"
+          >
+            <span className="max-w-[100px] capitalize truncate">
+              {currentModel && currentModel.includes("/")
+                ? currentModel.split("/")[1].trim().replace(/-/g, " ")
+                : "gemini-2.5-flash"}
+            </span>{" "}
+            <LuChevronDown />
+          </Button>
+        </DevTooltip>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         ref={popoverRef}
